@@ -26,6 +26,7 @@ namespace Banka_Mini_App
         {
             lblHesapNo.Text = hesap;
 
+            conn.Open();
             SqlCommand cmd = new SqlCommand("Select * from TBLKISILER where HESAPNO=@p1", conn);
             cmd.Parameters.AddWithValue("@p1", hesap);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -35,6 +36,39 @@ namespace Banka_Mini_App
                 lblTC.Text = dr[3].ToString();
                 lblTel.Text = dr[4].ToString();
             }
+            conn.Close();
+            conn.Open();
+            SqlCommand cmd2 = new SqlCommand("Select * from TBLHESAP where HESAPNO=@p1", conn);
+            cmd2.Parameters.AddWithValue("@p1", hesap);
+            SqlDataReader dr2 = cmd2.ExecuteReader();
+            while (dr2.Read())
+            {
+                lblBakiye.Text = dr2[1].ToString();
+            }
+            conn.Close();
+        }
+
+        private void btnGonder_Click(object sender, EventArgs e)
+        {
+            //Gönderilen Hesabın Para Artışı
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("update TBLHESAP set BAKIYE = BAKIYE + @p1 where HESAPNO = @p2", conn);
+            cmd.Parameters.AddWithValue("@p1", decimal.Parse(txtTutar.Text));
+            cmd.Parameters.AddWithValue("@p2", mskHesapNo2.Text);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+            //Gönderen Hesabın Para Azalışı
+            conn.Open();
+            SqlCommand cmd2 = new SqlCommand("update TBLHESAP set BAKIYE = BAKIYE - @k1 where HESAPNO = @k2", conn);
+            cmd2.Parameters.AddWithValue("@k1", decimal.Parse(txtTutar.Text));
+            cmd2.Parameters.AddWithValue("@k2", hesap);
+            cmd2.ExecuteNonQuery();
+            conn.Close();
+            MessageBox.Show("İşlem Başarıyla Gerçekleşti");
+
+
+
         }
     }
 }

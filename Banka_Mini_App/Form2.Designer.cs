@@ -42,6 +42,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.txtTutar = new System.Windows.Forms.TextBox();
             this.btnGonder = new System.Windows.Forms.Button();
+            this.lblBakiye = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -124,7 +126,7 @@
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.mskHesapNo2);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Location = new System.Drawing.Point(38, 165);
+            this.groupBox1.Location = new System.Drawing.Point(36, 199);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(249, 154);
             this.groupBox1.TabIndex = 8;
@@ -173,13 +175,34 @@
             this.btnGonder.TabIndex = 5;
             this.btnGonder.Text = "Gönder";
             this.btnGonder.UseVisualStyleBackColor = true;
+            this.btnGonder.Click += new System.EventHandler(this.btnGonder_Click);
+            // 
+            // lblBakiye
+            // 
+            this.lblBakiye.AutoSize = true;
+            this.lblBakiye.Location = new System.Drawing.Point(172, 155);
+            this.lblBakiye.Name = "lblBakiye";
+            this.lblBakiye.Size = new System.Drawing.Size(37, 18);
+            this.lblBakiye.TabIndex = 10;
+            this.lblBakiye.Text = "Null";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(105, 155);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(61, 18);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Bakiye:";
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(328, 345);
+            this.ClientSize = new System.Drawing.Size(328, 399);
+            this.Controls.Add(this.lblBakiye);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblHesapNo);
             this.Controls.Add(this.lblTel);
@@ -217,5 +240,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.MaskedTextBox mskHesapNo2;
         private System.Windows.Forms.Button btnGonder;
+        private System.Windows.Forms.Label lblBakiye;
+        private System.Windows.Forms.Label label6;
     }
 }
